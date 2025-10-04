@@ -3,6 +3,7 @@
 #include "menu.h"
 
 int main(){
-    menu();
+    int quant = 0;
+    menu(quant);
     return 0;
 }
