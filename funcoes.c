@@ -11,23 +11,23 @@ Node *cadastro(Node *lista, int *quant){
         printf("Erro de alocacao!\n");
         return lista;
     }
-    printf("Digite o nome do contato que deseja cadastrar");
+    printf("Digite o nome do contato que deseja cadastrar\n");
     fgets(novo->nome, sizeof(novo->nome), stdin);
     novo->nome[strcspn(novo->nome, "\n")] = '\0';
-    printf("Digite o telefone do contato ddd, sem espaços ou simbolos");
+    printf("Digite o telefone do contato ddd, sem espacos ou simbolos\n");
     fgets(novo->telefone, sizeof(novo->telefone), stdin);
     novo->telefone[strcspn(novo->telefone, "\n")] = '\0';
-    printf("Digite o email do contato");
+    printf("Digite o email do contato\n");
     fgets(novo->email, sizeof(novo->email), stdin);
     novo->email[strcspn(novo->email, "\n")] = '\0';
-    printf("Digite a cidade do contato");
+    printf("Digite a cidade do contato\n");
     fgets(novo->cidade, sizeof(novo->cidade), stdin);
     novo->cidade[strcspn(novo->cidade, "\n")] = '\0';
-    printf("Digite o estado da cidade, formato MT, SP e etc.");
+    printf("Digite o estado da cidade, formato MT, SP e etc.\n");
     fgets(novo->estado, sizeof(novo->estado), stdin);
     novo->estado[strcspn(novo->estado, "\n")] = '\0';
-    novo->id = *quant;
     (*quant)++;
+    novo->id = *quant;
     novo->next = NULL;
     if (lista == NULL) {
         return novo;
@@ -38,5 +38,18 @@ Node *cadastro(Node *lista, int *quant){
         }
         aux->next = novo;
         return lista;
+    }
+}
+
+void listagem(Node *lista, int *quant){
+    printf("%i", *quant);
+    if(!lista){
+        printf("Agenda vazia\n");
+    }
+    Node *aux = lista;
+    while(aux != NULL){
+        printf("ID: %i\nNome: %s\nTelefone: %s\nEmail: %s\n",aux->id, aux->nome, aux->telefone, aux->email);
+        printf("Cidade: %s\n Estado: %s\n\n", aux->cidade, aux->estado);
+        aux = aux->next;
     }
 }

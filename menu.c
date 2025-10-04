@@ -12,16 +12,18 @@ void menu(int *quant){
         scanf("%i", &escolha);
         switch (escolha){
         case 1://cadastro = não feito
-            lista = cadastro(lista, &quant);
+            int c;//variavel para limpar o buffer
+            while ((c = getchar()) != '\n' && c != EOF); 
+            lista = cadastro(lista, quant);
             break;
         case 2://listagem = não feito
-            listagem(lista);
+            listagem(lista, quant);
             break;
         case 3://busca = não feito
-            busca(lista);
+            //busca(lista);
             break;
         case 4://excluir = não feito
-            excluir(lista);
+            //excluir(lista);
             break;
         case 0:
             printf("Saindo...\n");
