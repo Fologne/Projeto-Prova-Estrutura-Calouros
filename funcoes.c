@@ -5,22 +5,38 @@
 #include "struct.h"
 #include "funcoes.h"
 
-void cadastro(Node *lista, int quant){
+Node *cadastro(Node *lista, int *quant){
+    Node *novo = malloc(sizeof(Node));
+    if (novo == NULL){//verificar se a alocacao funcionou 
+        printf("Erro de alocacao!\n");
+        return lista;
+    }
     printf("Digite o nome do contato que deseja cadastrar");
-    char nome[41];
-    fgets(nome, sizeof(nome), stdin);
-    nome[strcspn(nome, "\n")] = '\0';
+    fgets(novo->nome, sizeof(novo->nome), stdin);
+    novo->nome[strcspn(novo->nome, "\n")] = '\0';
     printf("Digite o telefone do contato ddd, sem espaços ou simbolos");
-    char telefone[12];
-    scanf("%s", telefone);
+    fgets(novo->telefone, sizeof(novo->telefone), stdin);
+    novo->telefone[strcspn(novo->telefone, "\n")] = '\0';
     printf("Digite o email do contato");
-    char email[41];
-    scanf("%s", email);
+    fgets(novo->email, sizeof(novo->email), stdin);
+    novo->email[strcspn(novo->email, "\n")] = '\0';
     printf("Digite a cidade do contato");
-    char cidade[41];
-    fgets(cidade, sizeof(cidade), stdin);
-    cidade[strcspn(cidade, "\n")] = '\0';
+    fgets(novo->cidade, sizeof(novo->cidade), stdin);
+    novo->cidade[strcspn(novo->cidade, "\n")] = '\0';
     printf("Digite o estado da cidade, formato MT, SP e etc.");
-    char estado[3];
-    scanf("%s", estado);
+    fgets(novo->estado, sizeof(novo->estado), stdin);
+    novo->estado[strcspn(novo->estado, "\n")] = '\0';
+    novo->id = *quant;
+    (*quant)++;
+    novo->next = NULL;
+    if (lista == NULL) {
+        return novo;
+    } else {
+        Node *aux = lista;
+        while (aux->next != NULL) {
+            aux = aux->next;
+        }
+        aux->next = novo;
+        return lista;
+    }
 }

@@ -4,7 +4,7 @@
 #include "struct.h"
 #include "funcoes.h"
 
-void menu(int quant){
+void menu(int *quant){
     Node *lista = NULL;
     int escolha;
     do{
@@ -12,7 +12,7 @@ void menu(int quant){
         scanf("%i", &escolha);
         switch (escolha){
         case 1://cadastro = não feito
-            cadastro(lista, quant);
+            lista = cadastro(lista, &quant);
             break;
         case 2://listagem = não feito
             listagem(lista);
