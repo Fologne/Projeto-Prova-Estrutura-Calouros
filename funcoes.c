@@ -41,15 +41,39 @@ Node *cadastro(Node *lista, int *quant){
     }
 }
 
-void listagem(Node *lista, int *quant){
-    printf("%i", *quant);
-    if(!lista){
-        printf("Agenda vazia\n");
-    }
+void listaID(Node *lista){
     Node *aux = lista;
     while(aux != NULL){
         printf("ID: %i\nNome: %s\nTelefone: %s\nEmail: %s\n",aux->id, aux->nome, aux->telefone, aux->email);
         printf("Cidade: %s\n Estado: %s\n\n", aux->cidade, aux->estado);
         aux = aux->next;
     }
+}
+
+void listagem(Node *lista){
+    printf("%i", *quant);
+    if(!lista){
+        printf("Agenda vazia\n");
+        return;
+    }
+    int escolha;
+    do{
+        printf("Digite\n1 para listagem por ID\n2 para listagem por ordem alfabetica\n3 para listagem por ordem alfabetica decrescente\n4 para listagem por cidade\n5 para listagem por Estado");
+        switch (escolha){
+        case 1://ID = feito
+            listaID(lista);
+            break;
+        case 2://alfabetica = não feito
+            break;
+        case 3://alfabetica decrescente = não feito
+            break;
+        case 4://cidade = não feito
+            break;
+        case 5://estado = não feito
+            break;
+        default:
+            break;
+        }
+    }
+    
 }

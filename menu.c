@@ -11,7 +11,7 @@ void menu(int *quant){
         printf("Digite\n1 para cadastrar um novo contato\n2 para listar contatos\n3 para buscar contatos\n4 para excluir contatos\n0 para sair\n");
         scanf("%i", &escolha);
         switch (escolha){
-        case 1://cadastro = não feito
+        case 1://cadastro = feito
             int c;//variavel para limpar o buffer
             while ((c = getchar()) != '\n' && c != EOF); 
             lista = cadastro(lista, quant);
