@@ -17,7 +17,7 @@ void menu(int *quant){
             lista = cadastro(lista, quant);
             break;
         case 2://listagem = não feito
-            listagem(lista, quant);
+            listagem(lista);
             break;
         case 3://busca = não feito
             //busca(lista);

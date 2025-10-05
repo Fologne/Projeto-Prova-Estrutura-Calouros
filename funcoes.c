@@ -4,6 +4,7 @@
 #include "menu.h"
 #include "struct.h"
 #include "funcoes.h"
+#include "ordena.h"
 
 Node *cadastro(Node *lista, int *quant){
     Node *novo = malloc(sizeof(Node));
@@ -41,7 +42,7 @@ Node *cadastro(Node *lista, int *quant){
     }
 }
 
-void listaID(Node *lista){
+void listag(Node *lista){
     Node *aux = lista;
     while(aux != NULL){
         printf("ID: %i\nNome: %s\nTelefone: %s\nEmail: %s\n",aux->id, aux->nome, aux->telefone, aux->email);
@@ -51,29 +52,38 @@ void listaID(Node *lista){
 }
 
 void listagem(Node *lista){
-    printf("%i", *quant);
     if(!lista){
         printf("Agenda vazia\n");
         return;
     }
     int escolha;
     do{
-        printf("Digite\n1 para listagem por ID\n2 para listagem por ordem alfabetica\n3 para listagem por ordem alfabetica decrescente\n4 para listagem por cidade\n5 para listagem por Estado");
+        printf("Digite\n1 para listagem por ID\n2 para listagem por ordem alfabetica\n3 para listagem por ordem alfabetica decrescente\n4 para listagem por cidade\n5 para listagem por Estado\n0 para ir no menu\n");
+        scanf("%i", &escolha);
         switch (escolha){
         case 1://ID = feito
-            listaID(lista);
+            Node *ordenado = quick_ID(lista);
+            listag(ordenado);
             break;
-        case 2://alfabetica = não feito
+        case 2://alfabetica = feito
+            Node *ordenado1 = quick_alfabeto(lista, 1);
+            listag(ordenado1);
             break;
-        case 3://alfabetica decrescente = não feito
+        case 3://alfabetica decrescente = feito
+            Node *ordenado2 = quick_alfabeto(lista, 0);
+            listag(ordenado2);
             break;
         case 4://cidade = não feito
             break;
         case 5://estado = não feito
             break;
+        case 0:
+            printf("Retornando ao menu...\n");
+            break;
         default:
+            printf("Escolha invalida");
             break;
         }
-    }
+    }while(escolha != 0);
     
 }
