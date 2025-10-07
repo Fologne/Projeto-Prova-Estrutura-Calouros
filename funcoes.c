@@ -74,6 +74,8 @@ void listagem(Node *lista){
             listag(ordenado2);
             break;
         case 4://cidade = não feito
+            Node *ordenado3 = quick_cidade(lista);
+            listag(ordenado3);
             break;
         case 5://estado = não feito
             break;

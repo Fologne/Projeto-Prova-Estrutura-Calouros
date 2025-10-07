@@ -79,3 +79,30 @@ Node *quick_ID(Node *lista){
     _quick_ID(lista, end); 
     return lista;
 }
+
+void _quick_cidade(Node *head, Node *end){
+    if (!head || head == end || head == end->next)
+        return;
+    Node *pivo = head;
+    Node *i = head;
+    Node *j = head->next;
+    while(j != end->next){
+        int cmp = strcasecmp(j->cidade, pivo->cidade);
+        if((cmp < 0)){
+            i = i->next;
+            swap(i, j);
+        }
+        j = j->next;
+    }
+    swap(head, i);
+    _quick_cidade(head, i);
+    _quick_cidade(i->next, end);
+    
+}
+
+Node *quick_cidade(Node *lista){
+    Node *end = lista;
+    while(end->next) end = end->next;
+    _quick_cidade(lista, end); 
+    return lista;
+}
