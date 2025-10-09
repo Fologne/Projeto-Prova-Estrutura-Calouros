@@ -73,11 +73,12 @@ void listagem(Node *lista){
             Node *ordenado2 = quick_alfabeto(lista, 0);
             listag(ordenado2);
             break;
-        case 4://cidade = não feito
+        case 4://cidade = feito
             Node *ordenado3 = quick_cidade(lista);
             listag(ordenado3);
             break;
-        case 5://estado = não feito
+        case 5://estado = feito
+            Node *ordenado4 = quick_estado(lista);
             break;
         case 0:
             printf("Retornando ao menu...\n");

@@ -16,7 +16,7 @@ void menu(int *quant){
             while ((c = getchar()) != '\n' && c != EOF); 
             lista = cadastro(lista, quant);
             break;
-        case 2://listagem = não feito
+        case 2://listagem = feito
             listagem(lista);
             break;
         case 3://busca = não feito
