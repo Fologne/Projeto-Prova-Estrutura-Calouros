@@ -1,3 +1,5 @@
+#pragma once
+
 typedef struct no{
     int id;
     char nome[41];

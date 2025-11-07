@@ -5,6 +5,7 @@
 #include "struct.h"
 #include "funcoes.h"
 #include "ordena.h"
+#include "bst.h"
 
 Node *cadastro(Node *lista, int *quant){
     Node *novo = malloc(sizeof(Node));
@@ -88,5 +89,66 @@ void listagem(Node *lista){
             break;
         }
     }while(escolha != 0);
-    
+}
+
+BST *inserirBST(BST *raiz, Node *lista){
+    if (lista == NULL) 
+        return raiz;
+    if (raiz == NULL) {
+        BST *novo = malloc(sizeof(BST));
+        strcpy(novo->nome, lista->nome);
+        novo->ref = lista;
+        novo->left = novo->right = NULL;
+        return novo;
+    }
+    int cmp = strcmp(lista->nome, raiz->nome);
+    if (cmp < 0)
+        raiz->left = inserirBST(raiz->left, lista);
+    else if (cmp > 0)
+        raiz->right = inserirBST(raiz->right, lista);
+    return raiz;
+}
+
+Node *buscarBST(BST *raiz, char *nome) {
+    if (raiz == NULL)
+        return NULL;
+
+    int cmp = strcmp(nome, raiz->nome);
+
+    if (cmp == 0)
+        return raiz->ref;
+    else if (cmp < 0)
+        return buscarBST(raiz->left, nome);
+    else
+        return buscarBST(raiz->right, nome);
+}
+
+BST *construirArvore(Node *lista){
+    BST *raiz = NULL;
+    for (Node *atual = lista; atual != NULL; atual = atual->next) {
+        raiz = inserirBST(raiz, atual);
+    }
+    return raiz;
+}
+
+void busca(Node *lista){
+    if (lista == NULL) {
+        printf("Lista vazia!\n");
+        return;
+    }
+    char nome[41];
+    printf("Digite o nome do contato que deseja buscar: ");
+    scanf("%40s", nome);
+    BST *raiz = construirArvore(lista);
+    Node *resultado = buscarBST(raiz, nome);
+    if (resultado != NULL) {
+        printf("ID: %d\n", resultado->id);
+        printf("Nome: %s\n", resultado->nome);
+        printf("Telefone: %s\n", resultado->telefone);
+        printf("Email: %s\n", resultado->email);
+        printf("Cidade: %s\n", resultado->cidade);
+        printf("Estado: %s\n", resultado->estado);
+    } else {
+        printf("\nContato não encontrado.\n");
+    }
 }
