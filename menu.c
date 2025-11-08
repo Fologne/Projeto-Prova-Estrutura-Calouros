@@ -19,11 +19,11 @@ void menu(int *quant){
         case 2://listagem = feito
             listagem(lista);
             break;
-        case 3://busca = não feito
+        case 3://busca = feito
             busca(lista);
             break;
         case 4://excluir = não feito
-            //excluir(lista);
+            excluir(&lista);
             break;
         case 0:
             printf("Saindo...\n");

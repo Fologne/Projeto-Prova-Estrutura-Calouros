@@ -137,7 +137,7 @@ void busca(Node *lista){
         return;
     }
     char nome[41];
-    printf("Digite o nome do contato que deseja buscar: ");
+    printf("Digite o nome do contato que deseja buscar:\n");
     scanf("%40s", nome);
     BST *raiz = construirArvore(lista);
     Node *resultado = buscarBST(raiz, nome);
@@ -149,6 +149,44 @@ void busca(Node *lista){
         printf("Cidade: %s\n", resultado->cidade);
         printf("Estado: %s\n", resultado->estado);
     } else {
-        printf("\nContato não encontrado.\n");
+        printf("Contato nao encontrado.\n");
     }
+}
+
+void excluir(Node **lista){
+    if(lista == NULL){
+        printf("Lista vazia, cadastre novos contatos\n");
+        return;
+    }
+    char nome[41];
+    printf("Digite o nome do contato que deseja excluir:\n");
+    scanf("%40s", nome);
+    Node *atual = *lista;
+    Node *anterior = NULL;
+    while (atual != NULL) {
+        if (strcmp(atual->nome, nome) == 0) {
+            printf("Excluindo contato:\n");
+            printf("ID: %d\n", atual->id);
+            printf("Nome: %s\n", atual->nome);
+            printf("Telefone: %s\n", atual->telefone);
+            printf("Email: %s\n", atual->email);
+            printf("Cidade: %s\n", atual->cidade);
+            printf("Estado: %s\n", atual->estado);
+
+            // Se for o primeiro nó
+            if (anterior == NULL) {
+                *lista = atual->next;
+            } else {
+                anterior->next = atual->next;
+            }
+
+            free(atual);
+            printf("\nContato excluido com sucesso!\n");
+            return;
+        }
+
+        anterior = atual;
+        atual = atual->next;
+    }
+    printf("Contato nao encontrado.\n");
 }
