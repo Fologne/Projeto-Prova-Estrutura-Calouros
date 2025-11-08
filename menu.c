@@ -22,7 +22,7 @@ void menu(int *quant){
         case 3://busca = feito
             busca(lista);
             break;
-        case 4://excluir = não feito
+        case 4://excluir = feito
             excluir(&lista);
             break;
         case 0:
