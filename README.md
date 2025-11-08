@@ -103,7 +103,7 @@ Digite
 1- Cadastrar Contato
 2- Listar Contatos
 3- Buscar Contato
-4- Ordenar Contatos
+4- Excluir Contatos
 0- Sair
 
 Digite a opção desejada: 3
